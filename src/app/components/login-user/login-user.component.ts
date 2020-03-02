@@ -12,6 +12,7 @@ import { MessageService } from 'src/app/core/message.service';
 export class LoginUserComponent implements OnInit {
 
   user = new UserLogin();
+  submitted = false;
 
   constructor(private apiService: ApiService, 
               private router: Router,
@@ -21,15 +22,18 @@ export class LoginUserComponent implements OnInit {
   }
 
   public login() {
+    this.submitted = true;
     this.apiService.login(this.user).subscribe(data => {
       this.loginSuccess(data);
       console.log(data);
     }, error => {
+      this.submitted = false;
       this.messageService.showError('Login', 'Falha de autenticação');
     });
   }
-
+ 
   public loginSuccess(data: any) {
+    this.submitted = false;
     localStorage.clear();
     localStorage.setItem('accessToken', data.access_token);
     localStorage.setItem('refreshToken', data.refresh_token);
