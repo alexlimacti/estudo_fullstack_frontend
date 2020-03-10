@@ -1,22 +1,28 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Input,
+  Output,
+  EventEmitter
+} from "@angular/core";
+import { ApiService } from "src/app/core/api.service";
 
 @Component({
-  selector: 'app-delete-user-modal',
-  templateUrl: './delete-user-modal.component.html',
-  styleUrls: ['./delete-user-modal.component.scss']
+  selector: "app-delete-user-modal",
+  templateUrl: "./delete-user-modal.component.html",
+  styleUrls: ["./delete-user-modal.component.scss"]
 })
 export class DeleteUserModalComponent implements OnInit {
-  @ViewChild('deleteUserModal') public deleteUserModal;
+  @ViewChild("deleteUserModal") public deleteUserModal;
   @Input() recebeItem;
   @Output() resposta = new EventEmitter();
-  recebeTitulo = 'Curso de Spring Boot e Angular 7';
-  recebePergunta = 'Deseja realmente deletar este usuário?';
+  recebeTitulo = "Brincando com Spring Boot e Angular 9";
+  recebePergunta = "Deseja realmente deletar este usuário?";
 
-  constructor() { }
+  constructor(private apiService: ApiService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   onClose(event: any) {
     console.log(event);
   }
@@ -25,6 +31,7 @@ export class DeleteUserModalComponent implements OnInit {
   }
   delete() {
     this.resposta.emit(this.recebeItem);
+    this.apiService.deleteUser(this.recebeItem);
     this.deleteUserModal.hide();
   }
 }
