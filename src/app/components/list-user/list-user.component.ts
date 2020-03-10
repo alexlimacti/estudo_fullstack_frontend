@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDTO } from 'src/app/core/model/userDTO';
 import { Router } from '@angular/router';
-import { MessageService } from 'src/app/core/message.service';
 import { ApiService } from 'src/app/core/api.service';
+import { UserDTO } from 'src/app/core/model/userDTO';
+import { MessageService } from 'src/app/core/message.service';
 
 @Component({
   selector: 'app-list-user',
@@ -10,7 +10,6 @@ import { ApiService } from 'src/app/core/api.service';
   styleUrls: ['./list-user.component.scss']
 })
 export class ListUserComponent implements OnInit {
-
   users: UserDTO[];
 
   constructor(private router: Router,
@@ -38,5 +37,4 @@ export class ListUserComponent implements OnInit {
       this.messageService.showError('Delete usuários', 'Falha ao excluir usuário');
     });
   }
-
 }

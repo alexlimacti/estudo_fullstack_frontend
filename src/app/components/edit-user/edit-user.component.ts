@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDTO } from 'src/app/core/model/userDTO';
 import { ApiService } from 'src/app/core/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { UserDTO } from 'src/app/core/model/userDTO';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { MessageService } from 'src/app/core/message.service';
 
 @Component({
@@ -10,7 +12,6 @@ import { MessageService } from 'src/app/core/message.service';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
-
   user = new  UserDTO();
   idUser: string;
 
@@ -38,7 +39,6 @@ export class EditUserComponent implements OnInit {
     });
   }
   goBack() {
-    //this.location.back();
+    this.location.back();
   }
-
 }

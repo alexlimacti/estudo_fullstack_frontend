@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
@@ -12,10 +12,11 @@ import { MessageService } from 'src/app/core/message.service';
 export class HeaderComponent implements OnInit {
 
   constructor(private apiService: ApiService, 
-    private router: Router,
-    private messageService: MessageService) { }
+              private router: Router,
+              private messageService: MessageService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
   logout() {
     this.apiService.logout().subscribe(() => {
       this.clearLocalStore();
@@ -34,5 +35,4 @@ export class HeaderComponent implements OnInit {
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();
   }
-
 }

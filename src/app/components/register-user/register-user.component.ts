@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserDTO } from 'src/app/core/model/userDTO';
-import { Subject } from 'rxjs';
 import { ApiService } from 'src/app/core/api.service';
+import { Location } from '@angular/common';
 import { MessageService } from 'src/app/core/message.service';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -10,8 +11,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.scss']
 })
-export class RegisterUserComponent implements OnInit {
-
+export class RegisterUserComponent implements OnInit, OnDestroy {
   public user = new UserDTO();
   private unsubscribeMessage = new Subject(); 
   submitted = false;
@@ -39,11 +39,10 @@ export class RegisterUserComponent implements OnInit {
     });
   }
   goBack() {
-    //this.location.back();
+    this.location.back();
   }
   ngOnDestroy() {
     this.unsubscribeMessage.next();
     this.unsubscribeMessage.complete();
   }
-
 }

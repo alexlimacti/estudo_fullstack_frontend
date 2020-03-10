@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDTO } from 'src/app/core/model/userDTO';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-welcome',
@@ -9,7 +8,7 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class WelcomeComponent implements OnInit {
 
-  user = new UserDTO();
+  public user = new UserDTO();
 
   constructor() { }
 
