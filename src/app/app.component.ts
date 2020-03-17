@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { UserDTO } from "./core/model/userDTO";
 import { ApiService } from "./core/api.service";
 import { Observable } from "rxjs";
 

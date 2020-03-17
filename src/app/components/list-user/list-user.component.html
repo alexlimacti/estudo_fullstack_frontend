@@ -1,34 +1,66 @@
-<section class="grey-text w-responsive mx-auto p-5">    
-  <h2 class="h4 mb-4 text-center font-weight-bold"> Lista de Usuários</h2>
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th class="hidden">Id</th>
-      <th>Nome</th>
-      <th>Sobrenome</th>
-      <th>E-mail</th>
-      <th>Situação</th>
-      <th>Role</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let user of users; let i = index;">
-      <td class="hidden">{{i+1}}</td>
-      <td>{{user.firstName}}</td>
-      <td>{{user.lastName}}</td>
-      <td>{{user.email}}</td>
-      <td>{{user.enabled}}</td>
-      <td>{{getRole(user)}}</td>
-      <td>
-        <div class="btn-group btn-group-sm">
-          <button class="btn btn-danger " (click)="deleteUserModal.show()"> Excluir</button>
-          <button class="btn btn-info " [routerLink]="['/edit-user', user.id]" style="margin-left:20px;"> Editar</button>
-
-        </div>
-      </td>
-      <app-delete-user-modal #deleteUserModal [recebeItem]="user" (resposta)="deleteUser($event)"></app-delete-user-modal>
-      
-    </tr>
-    </tbody>
-  </table>
-</section>
+<div
+  class="container z-depth-1 border-top p-5 my-5"
+  style="background-color: white;"
+>
+  <!-- Section: Block Content -->
+  <section>
+    <!-- Shopping Cart table -->
+    <h2 class="h4 mb-4 text-center font-weight-bold">Lista de Usuários</h2>
+    <div class="table-responsive">
+      <table class="table product-table table-cart-v-1">
+        <!-- Table head -->
+        <thead>
+          <tr>
+            <th class="hidden">Id</th>
+            <th class="font-weight-bold"><strong>Nome</strong></th>
+            <th class="font-weight-bold"><strong>Sobrenome</strong></th>
+            <th class="font-weight-bold"><strong>E-mail</strong></th>
+            <th class="font-weight-bold"><strong>Situação</strong></th>
+            <th class="font-weight-bold"><strong>Role</strong></th>
+          </tr>
+        </thead>
+        <!-- Table head -->
+        <!-- Table body -->
+        <tbody>
+          <!-- First row -->
+          <tr></tr>
+          <tr *ngFor="let user of users; let i = index" scope="row">
+            <td class="hidden">{{ i + 1 }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td *ngIf="user.enabled == true">Habilitado</td>
+            <td *ngIf="user.enabled == false">Desabilitado</td>
+            <td>{{ getRole(user) }}</td>
+            <td>
+              <div class="btn-group btn-group-sm">
+                <button
+                  class="btn btn-danger "
+                  (click)="deleteUserModal.show()"
+                >
+                  Excluir
+                </button>
+                <button
+                  class="btn btn-info "
+                  [routerLink]="['/edit-user', user.id]"
+                  style="margin-left:20px;"
+                >
+                  Editar
+                </button>
+              </div>
+            </td>
+            <app-delete-user-modal
+              #deleteUserModal
+              [recebeItem]="user"
+              (resposta)="deleteUser($event)"
+            ></app-delete-user-modal>
+          </tr>
+          <!-- Fourth row -->
+        </tbody>
+        <!-- Table body -->
+      </table>
+    </div>
+    <!-- Shopping Cart table -->
+  </section>
+  <!-- Section: Block Content -->
+</div>
