@@ -1,94 +1,137 @@
-<div class="grey lighten-3 container my-5">
-  <!-- Section: Block Content -->
-  <section class="text-center dark-grey-text">
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-md-6 mb-4 mb-md-0">
-        <h3 class="font-weight-bold">Gestão de Identidade</h3>
+<section class="content-header">
+  <div class="grey lighten-3 container my-5">
+    <!-- Section: Block Content -->
+    <section class="text-center dark-grey-text">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h3 class="font-weight-bold">Gestão de Identidade</h3>
 
-        <p class="text-muted">
-          Gerenciamento de quais sistemas os servidores públicos podem acessar,
-          bem como aplicar suas devidas permissões. Também é possível a
-          aplicação massiva de cadastros e permissões através do upload de
-          planilhas.
-        </p>
+          <p class="text-muted">
+            Gerenciamento de quais sistemas os servidores públicos podem
+            acessar, bem como aplicar suas devidas permissões. Também é possível
+            a aplicação massiva de cadastros e permissões através do upload de
+            planilhas.
+          </p>
+        </div>
+        <!--Grid column-->
+        <div class="col-md-6">
+          <img
+            src="../../../assets/img/sempapel.png"
+            alt=""
+            class="img-fluid"
+          />
+        </div>
+        <!--Grid column-->
       </div>
-      <!--Grid column-->
-      <div class="col-md-6">
-        <img src="../../../assets/img/sempapel.png" alt="" class="img-fluid" />
+      <br />
+      <br />
+      <br />
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="media white z-depth-1 rounded">
+            <i
+              class="far fa-address-card fa-lg blue z-depth-1 p-4 rounded-left text-white mr-3"
+            ></i>
+            <div class="media-body p-1">
+              <p class="text-uppercase text-muted mb-1">
+                <small>Usuários</small>
+              </p>
+              <h5 class="font-weight-bold mb-0" style="text-align: right">
+                {{ summary.total }}
+              </h5>
+            </div>
+          </div>
+        </div>
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="media white z-depth-1 rounded">
+            <i
+              class="fas fa-child fa-lg deep-purple z-depth-1 p-4 rounded-left text-white mr-3"
+            ></i>
+            <div class="media-body p-1">
+              <p class="text-uppercase text-muted mb-1">
+                <small>Usuários Ativos</small>
+              </p>
+              <h5 class="font-weight-bold mb-0" style="text-align: right">
+                {{ summary.ativos }}
+              </h5>
+            </div>
+          </div>
+        </div>
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="media white z-depth-1 rounded">
+            <i
+              class="fas fa-meh-rolling-eyes fa-lg pink z-depth-1 p-4 rounded-left text-white mr-3"
+            ></i>
+            <div class="media-body p-1">
+              <p class="text-uppercase text-muted mb-1">
+                <small>Usuários Inativos</small>
+              </p>
+              <h5 class="font-weight-bold mb-0" style="text-align: right">
+                {{ summary.inativos }}
+              </h5>
+            </div>
+          </div>
+        </div>
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="media white z-depth-1 rounded">
+            <i
+              class="fas fa-chart-pie fa-lg teal z-depth-1 p-4 rounded-left text-white mr-3"
+            ></i>
+            <div class="media-body p-1">
+              <p class="text-uppercase text-muted mb-1">
+                <small>traffic</small>
+              </p>
+              <h5 class="font-weight-bold mb-0">323 540</h5>
+            </div>
+          </div>
+        </div>
+        <!--Grid column-->
       </div>
-      <!--Grid column-->
-    </div>
-    <br />
-    <br />
-    <br />
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="media white z-depth-1 rounded">
-          <i
-            class="far fa-address-card fa-lg blue z-depth-1 p-4 rounded-left text-white mr-3"
-          ></i>
-          <div class="media-body p-1">
-            <p class="text-uppercase text-muted mb-1">
-              <small>Usuários</small>
-            </p>
-            <h5 class="font-weight-bold mb-0" style="text-align: right">
-              {{ summary.total }}
-            </h5>
+      <!--Grid row-->
+      <br />
+      <div class="row">
+        <!-- Grafico Pizza -->
+        <div class="card col-lg-6 col-md-6 mb-4">
+          <div class="card-body mr-md-1">
+            <div style="display: block">
+              <canvas
+                baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"
+              ></canvas>
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <!-- Grafico barras-->
+        <div class="card col-lg-6 col-md-6 mb-4">
+          <div class="card-body mr-md-1">
+            <div style="display: block">
+              <canvas
+                baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+              >
+              </canvas>
+            </div>
           </div>
         </div>
       </div>
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="media white z-depth-1 rounded">
-          <i
-            class="fas fa-child fa-lg deep-purple z-depth-1 p-4 rounded-left text-white mr-3"
-          ></i>
-          <div class="media-body p-1">
-            <p class="text-uppercase text-muted mb-1">
-              <small>Usuários Ativos</small>
-            </p>
-            <h5 class="font-weight-bold mb-0" style="text-align: right">
-              {{ summary.ativos }}
-            </h5>
-          </div>
-        </div>
-      </div>
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="media white z-depth-1 rounded">
-          <i
-            class="fas fa-meh-rolling-eyes fa-lg pink z-depth-1 p-4 rounded-left text-white mr-3"
-          ></i>
-          <div class="media-body p-1">
-            <p class="text-uppercase text-muted mb-1">
-              <small>Usuários Inativos</small>
-            </p>
-            <h5 class="font-weight-bold mb-0" style="text-align: right">
-              {{ summary.inativos }}
-            </h5>
-          </div>
-        </div>
-      </div>
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="media white z-depth-1 rounded">
-          <i
-            class="fas fa-chart-pie fa-lg teal z-depth-1 p-4 rounded-left text-white mr-3"
-          ></i>
-          <div class="media-body p-1">
-            <p class="text-uppercase text-muted mb-1"><small>traffic</small></p>
-            <h5 class="font-weight-bold mb-0">323 540</h5>
-          </div>
-        </div>
-      </div>
-      <!--Grid column-->
-    </div>
-    <!--Grid row-->
-    <br />
-  </section>
-  <!--Section: Content-->
-</div>
+    </section>
+    <!--Section: Content-->
+  </div>
+</section>

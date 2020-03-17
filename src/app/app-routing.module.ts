@@ -8,6 +8,7 @@ import { ListUserComponent } from "./components/list-user/list-user.component";
 import { EditUserComponent } from "./components/edit-user/edit-user.component";
 import { AuthGuard } from "./core/guards/auth.guard";
 import { HomeComponent } from "./components/home/home.component";
+import { VirtualTableComponent } from "./components/virtual-table/virtual-table.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -16,6 +17,12 @@ const routes: Routes = [
   {
     path: "resend-register-token",
     component: ResendRegistrationTokenComponent
+  },
+  {
+    path: "virtual-table",
+    component: VirtualTableComponent,
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard]
   },
   {
     path: "welcome",

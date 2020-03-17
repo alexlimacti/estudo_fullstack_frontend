@@ -1,6 +1,8 @@
 <app-header *ngIf="isAuthenticated() | async"></app-header>
+<!-- Side Bar -->
+<app-menu *ngIf="isAuthenticated() | async"></app-menu>
 <!-- Main -->
-<main class="view grey lighten-3">
+<main class="main view grey lighten-3">
   <router-outlet></router-outlet>
 </main>
 <!-- /.Main -->
