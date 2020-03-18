@@ -10,6 +10,7 @@ import { AuthGuard } from "./core/guards/auth.guard";
 import { HomeComponent } from "./components/home/home.component";
 import { VirtualTableComponent } from "./components/virtual-table/virtual-table.component";
 import { DocumentComposeComponent } from "./components/document-compose/document-compose.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -18,6 +19,12 @@ const routes: Routes = [
   {
     path: "resend-register-token",
     component: ResendRegistrationTokenComponent
+  },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard]
   },
   {
     path: "virtual-table",

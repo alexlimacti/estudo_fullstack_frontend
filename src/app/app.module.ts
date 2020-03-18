@@ -27,6 +27,7 @@ import { MenuComponent } from "./shared/components/menu/menu.component";
 import { ChartsModule } from "ng2-charts";
 import { VirtualTableComponent } from "./components/virtual-table/virtual-table.component";
 import { DocumentComposeComponent } from "./components/document-compose/document-compose.component";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DocumentComposeComponent } from "./components/document-compose/document
     HomeComponent,
     MenuComponent,
     VirtualTableComponent,
-    DocumentComposeComponent
+    DocumentComposeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
