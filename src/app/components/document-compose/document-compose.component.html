@@ -1,0 +1,18 @@
+<div
+  class="container z-depth-1 border-top p-5 my-5 page"
+  style="background-color: white;"
+>
+  <section>
+    <h2 class="h4 mb-4 text-center font-weight-bold">Editor de Texto</h2>
+    <div class="table-responsive">
+      <angular-editor
+        id="editor1"
+        [(ngModel)]="htmlContent1"
+        [config]="config1"
+        (ngModelChange)="onChange($event)"
+        (blur)="onBlur($event)"
+      ></angular-editor>
+      <p class="html">Saída em HTML: {{ htmlContent1 }}</p>
+    </div>
+  </section>
+</div>

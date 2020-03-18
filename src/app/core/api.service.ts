@@ -130,4 +130,7 @@ export class ApiService {
       AppUtils.OPTIONS_OBJECTO
     );
   }
+  isUserLogged() {
+    return localStorage.hasOwnProperty("currentUser");
+  }
 }

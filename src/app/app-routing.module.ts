@@ -9,6 +9,7 @@ import { EditUserComponent } from "./components/edit-user/edit-user.component";
 import { AuthGuard } from "./core/guards/auth.guard";
 import { HomeComponent } from "./components/home/home.component";
 import { VirtualTableComponent } from "./components/virtual-table/virtual-table.component";
+import { DocumentComposeComponent } from "./components/document-compose/document-compose.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -21,6 +22,12 @@ const routes: Routes = [
   {
     path: "virtual-table",
     component: VirtualTableComponent,
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard]
+  },
+  {
+    path: "document-compose",
+    component: DocumentComposeComponent,
     canActivate: [AuthGuard],
     canLoad: [AuthGuard]
   },

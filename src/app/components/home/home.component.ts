@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { ApiService } from "src/app/core/api.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -8,9 +9,13 @@ import { ApiService } from "src/app/core/api.service";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  isUserLogged = this.apiService.isUserLogged();
 
-  ngOnInit(): void {}
+  constructor(private apiService: ApiService, private router: Router) {}
+
+  ngOnInit(): void {
+    if (this.isUserLogged) this.router.navigate(["/welcome"]);
+  }
 
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();

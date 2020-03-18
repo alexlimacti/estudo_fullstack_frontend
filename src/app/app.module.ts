@@ -1,6 +1,8 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { MDBBootstrapModule } from "angular-bootstrap-md";
+import { CKEditorModule } from "ng2-ckeditor";
+import { AngularEditorModule } from "@kolkov/angular-editor";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -24,6 +26,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { MenuComponent } from "./shared/components/menu/menu.component";
 import { ChartsModule } from "ng2-charts";
 import { VirtualTableComponent } from "./components/virtual-table/virtual-table.component";
+import { DocumentComposeComponent } from "./components/document-compose/document-compose.component";
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { VirtualTableComponent } from "./components/virtual-table/virtual-table.
     DeleteUserModalComponent,
     HomeComponent,
     MenuComponent,
-    VirtualTableComponent
+    VirtualTableComponent,
+    DocumentComposeComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,8 @@ import { VirtualTableComponent } from "./components/virtual-table/virtual-table.
     FormsModule,
     BrowserAnimationsModule,
     ChartsModule,
+    AngularEditorModule,
+    CKEditorModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: "toast-top-center"
