@@ -48,8 +48,8 @@ export class LoginUserComponent implements OnInit {
       user => {
         this.redirectPage(user);
         this.messageService.showSuccess(
-          "Bem Vindo ao trem",
-          "Brincando com Spring Boot e Angular 7"
+          "Bem Vindo ao Sem Papel",
+          "Integrador de Identidade"
         );
       },
       error => {

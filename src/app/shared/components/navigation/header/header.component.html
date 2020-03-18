@@ -1,37 +1,49 @@
 <mdb-navbar
-  SideClass="navbar navbar-expand-lg navbar-dark unique-color"
+  SideClass="navbar navbar-expand-lg navbar-dark lighten-3"
   [containerInside]="false"
 >
   <mdb-navbar-brand>
-    <a class="logo navbar-brand" routerLink="/welcome"
-      ><strong>Brincando com Spring Boot e Angular 9</strong></a
+    <img
+      src="../../../assets/img/sempapel.png"
+      height="30"
+      alt="mdb logo"
+      style="margin-right: 20px;"
+    />
+
+    <a class="logo navbar-brand" style="color: black;" routerLink="/welcome"
+      ><strong>Integrador de Identidade</strong></a
     >
   </mdb-navbar-brand>
   <links>
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item">
         <a class="nav-link">
-          <mdb-icon fab icon="twitter"></mdb-icon>
+          <mdb-icon fab icon="twitter" style="color: black;"></mdb-icon>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link">
-          <mdb-icon fab icon="instagram"></mdb-icon>
+          <mdb-icon fab icon="instagram" style="color: black;"></mdb-icon>
         </a>
       </li>
       <li class="nav-item " dropdown>
         <a class="nav-link">
           <div class="btn-group" mdbDropdown>
-            <mdb-icon fab icon="teamspeak" mdbDropdownToggle></mdb-icon>
+            <mdb-icon
+              fab
+              icon="teamspeak"
+              mdbDropdownToggle
+              style="color: black;"
+            ></mdb-icon>
             <span class="badge green"></span>
             <div class="dropdown-menu dropdown-menu-right dropdown-primary">
               <a class="dropdown-item" [routerLink]="['/list-user']">
-                <i class="fas fa-users"></i>
+                <i class="fas fa-users" style="color: black;"></i>
                 Usuários
                 <span class="badge green"><!--{{ users?.length }}-->8</span>
               </a>
               <a class="dropdown-item" (click)="logout()">
-                <i class="fas fa-door-open"></i>
+                <i class="fas fa-door-open" style="color: black;"></i>
                 Sair
               </a>
             </div>

@@ -1,41 +1,105 @@
-<section class="grey-text w-responsive mx-auto p-5">
-  <form (ngSubmit)="update()" #detailCustomerForm="ngForm">
-      <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{user.id}}</span> -> {{user.firstName}}</h4>
-    <div class="form-group">
-      <label for="firstName">Nome</label>
-      <input type="text" class="form-control" id="firstName" required
-      [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel">
-      <div [hidden]="firstName.valid || firstName.pristine"
-           class="alert alert-danger">
-           Favor digitar o primeiro nome
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <label for="lastName">Sobrenome</label>
-      <input type="text" class="form-control" id="lastName" required
-      [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel">
-      <div [hidden]="lastName.valid || lastName.pristine"
-           class="alert alert-danger">
-           Favor digitar o o Ultimo nome
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <label for="email">E-mail</label>
-      <input type="text" class="form-control" id="email" required
-      [(ngModel)]="user.email" name="email" #email="ngModel">
-      <div [hidden]="email.valid || email.pristine"
-           class="alert alert-danger">
-          Favor digitar o email
-      </div>
-    </div>
+<div class="view container my-5">
+  <!--Section: Content-->
+  <section class="text-center dark-grey-text mb-5">
+    <div class="card">
+      <div class="card-body rounded-top border-top p-5">
+        <!-- Section heading -->
+        <h4 class="h4 mb-4 text-center">
+          <span>Código {{ user.id }}</span> ->
+          {{ user.firstName }}
+        </h4>
 
-    <div  class="btn-group btn-group-sm">
-      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
-      <button type="submit" class="btn btn-dark" [disabled]="!detailCustomerForm.form.valid">Atualizar</button>
-    </div>
+        <form
+          (ngSubmit)="update()"
+          #detailCustomerForm="ngForm"
+          class="mb-4 mx-md-5"
+        >
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                required
+                [(ngModel)]="user.firstName"
+                name="firstName"
+                #firstName="ngModel"
+                placeholder="Primeiro Nome"
+              />
+              <div
+                [hidden]="firstName.valid || firstName.pristine"
+                class="alert alert-danger"
+              >
+                Favor digitar o primeiro nome
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <!-- Email -->
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                required
+                [(ngModel)]="user.lastName"
+                name="lastName"
+                #lastName="ngModel"
+                placeholder="Sobrenome"
+              />
+              <div
+                [hidden]="lastName.valid || lastName.pristine"
+                class="alert alert-danger"
+              >
+                Favor digitar o o Ultimo nome
+              </div>
+            </div>
+          </div>
 
-    
-  </form>
-</section>
+          <div class="row">
+            <div class="col-md-12 mb-4">
+              <!-- Subject -->
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                required
+                [(ngModel)]="user.email"
+                name="email"
+                #email="ngModel"
+                placeholder="Email"
+              />
+              <div
+                [hidden]="email.valid || email.pristine"
+                class="alert alert-danger"
+              >
+                Favor digitar o email
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="text-center">
+                <button
+                  type="button"
+                  class="btn btn-info btn-md"
+                  style="margin-right: 20px;"
+                  (click)="goBack()"
+                >
+                  Voltar
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-info btn-md"
+                  [disabled]="!detailCustomerForm.form.valid"
+                >
+                  Atualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!--Section: Content-->
+</div>
