@@ -59,6 +59,7 @@ export class ApiService {
       }
     });
   }
+
   registerUser(user: UserDTO): Observable<any> {
     return this.httpClient.post<any>(AppUtils.REGISTER_URL, user, {headers: AppUtils.HEADERS_COMMUN});
   }
@@ -102,8 +103,12 @@ export class ApiService {
   }
   updateUser(user: UserDTO): Observable<any> {
     return this.httpClient.put<any>(`${this.baseUrl}/${user.id}`, user, AppUtils.OPTIONS_OBJECTO);
-    }
-    logout(): Observable<any> {
-      return this.httpClient.get<any>(`${AppUtils.BASE_URL}` + 'api/logout', AppUtils.OPTIONS_OBJECTO);
-    }
+  }
+  logout(): Observable<any> {
+    return this.httpClient.get<any>(`${AppUtils.BASE_URL}` + 'api/logout', AppUtils.OPTIONS_OBJECTO);
+  }
+
+  isUserLogged() {    
+    return localStorage.hasOwnProperty('currentUser');      
+  }  
 }

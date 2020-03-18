@@ -12,6 +12,7 @@ import { MessageService } from "src/app/core/message.service";
 export class LoginUserComponent implements OnInit {
   user = new UserLogin();
   submitted = false;
+  isUserLogged = this.apiService.isUserLogged();
 
   constructor(
     private apiService: ApiService,
@@ -19,7 +20,10 @@ export class LoginUserComponent implements OnInit {
     private messageService: MessageService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.isUserLogged) 
+      this.router.navigate(['/welcome']);    
+  }
 
   public login() {
     this.submitted = true;
@@ -49,6 +53,8 @@ export class LoginUserComponent implements OnInit {
         );
       },
       error => {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
         this.messageService.showError(
           "Usuário principal",
           "Falha ao carregar usuário principal"
@@ -61,4 +67,5 @@ export class LoginUserComponent implements OnInit {
     localStorage.setItem("currentUser", JSON.stringify(user));
     this.router.navigate(["welcome"]);
   }
+
 }
