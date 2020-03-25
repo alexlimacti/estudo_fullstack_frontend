@@ -1,3 +1,4 @@
+import { ReportsModule } from './reports/reports.module';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LoginUserComponent } from "./components/login-user/login-user.component";
@@ -34,7 +35,8 @@ const routes: Routes = [
     component: EditUserComponent,
     canActivate: [AuthGuard],
     canLoad: [AuthGuard]
-  }
+  },
+  { path: 'reports', loadChildren: () => ReportsModule }
 ];
 
 @NgModule({

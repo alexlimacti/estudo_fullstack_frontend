@@ -42,6 +42,10 @@
                 Usuários
                 <span class="badge green"><!--{{ users?.length }}-->8</span>
               </a>
+              <a class="dropdown-item" [routerLink]="['/reports/users']">
+                <i class="fas fa-file-pdf" style="color: black"></i>
+                Relatório de usuários
+              </a>
               <a class="dropdown-item" (click)="logout()">
                 <i class="fas fa-door-open" style="color: black;"></i>
                 Sair

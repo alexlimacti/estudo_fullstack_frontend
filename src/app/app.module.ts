@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MessageService } from './core/message.service';
 import { HomeComponent } from './components/home/home.component';
+import { ReportsService } from './reports/reports.service';
 
 @NgModule({
   declarations: [
@@ -48,14 +49,14 @@ import { HomeComponent } from './components/home/home.component';
       })
 
   ],
-  providers: [ApiService, AuthGuard, MessageService,
+  providers: [ApiService, AuthGuard, MessageService, ReportsService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
     multi : true
     }
     ],
-   
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { ReportsService } from './../../reports/reports.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
@@ -14,7 +15,8 @@ export class ListUserComponent implements OnInit {
 
   constructor(private router: Router,
               private messageService: MessageService,
-              private apiService: ApiService) { }
+              private apiService: ApiService,
+              private reportsService: ReportsService) { }
 
   ngOnInit() {
     if (!this.apiService.isAuthenticated()) {
@@ -36,5 +38,14 @@ export class ListUserComponent implements OnInit {
     }, error => {
       this.messageService.showError('Delete usuários', 'Falha ao excluir usuário');
     });
+  }
+
+  generateReport() {
+    this.reportsService.usersReport()
+      .then(report => {
+        const url = window.URL.createObjectURL(report);
+
+        window.open(url);
+      });
   }
 }
