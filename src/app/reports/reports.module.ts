@@ -1,4 +1,3 @@
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +9,6 @@ import { UsersReportComponent } from './users-report/users-report.component';
   declarations: [UsersReportComponent],
   imports: [
     CommonModule,
-    FormsModule,
     ReportsRoutingModule
   ]
 })
