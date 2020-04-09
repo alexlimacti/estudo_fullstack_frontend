@@ -133,4 +133,12 @@ export class ApiService {
   isUserLogged() {
     return localStorage.hasOwnProperty("currentUser");
   }
+  usersReport() {
+    return this.httpClient.get(
+      `${this.baseUrl}/reports`,
+      { responseType: 'blob' })
+      .toPromise()
+      .then(response => response);
+
+  }
 }

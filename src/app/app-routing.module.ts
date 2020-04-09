@@ -11,6 +11,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { VirtualTableComponent } from "./components/virtual-table/virtual-table.component";
 import { DocumentComposeComponent } from "./components/document-compose/document-compose.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { UsersReportComponent } from './components/users-report/users-report.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -51,6 +52,11 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'users',
+    component: UsersReportComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: "edit-user/:id",
     component: EditUserComponent,
     canActivate: [AuthGuard],
@@ -62,4 +68,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
